@@ -1,4 +1,5 @@
-CommodityModels
-===============
+Commodity Models
+============
 
-Plugins Implementing Commodity Models
+This repository holds several commodity models plugins for use with Fairmat.
+
