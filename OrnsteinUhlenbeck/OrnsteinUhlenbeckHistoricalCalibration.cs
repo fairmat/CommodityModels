@@ -30,10 +30,10 @@ namespace OrnsteinUhlenbeck
 
 
     /// <summary>
-    /// Wrapper for the new model.
+    /// Calibration Wrapper for the new plug-in model.
     /// </summary>
     [Extension("/Fairmat/Estimator")]
-    public class OrnsteinUhlenbeckHistoricalCalibrationNew : OrnsteinUhlenbeckHistoricalCalibration
+    public class OrnsteinUhlenbeckHistoricalCalibrationPlugin : OrnsteinUhlenbeckHistoricalCalibration
     {
         public override Type ProvidesTo
         {

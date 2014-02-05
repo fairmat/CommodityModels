@@ -51,7 +51,7 @@ namespace OrnsteinUhlenbeck
             Vector s = (Vector)Array.ConvertAll<IMarketData, double>(tmp, x => Math.Log( ((Scalar)x).Value));
 
 
-            //Assume elements are  order for decreasing date
+            //Assumes elements are  order for decreasing date
             double dt = (tmp[0].TimeStamp - tmp[1].TimeStamp).TotalDays / 252.0;
 
 
