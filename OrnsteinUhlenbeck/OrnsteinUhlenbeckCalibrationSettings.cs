@@ -21,6 +21,7 @@ using System.Text;
 using Mono.Addins;
 using DVPLI;
 using Fairmat.MarketData;
+using DVPLI.Enums;
 namespace OrnsteinUhlenbeck
 {
     [SettingsContainer("Ornstein Uhlenbeck Calibration Preferences", SettingType = SettingType.Calibration)]
