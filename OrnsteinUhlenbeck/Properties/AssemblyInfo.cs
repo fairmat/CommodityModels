@@ -54,7 +54,7 @@ using Mono.Addins;
 
 
 // The following lines tell that the assembly is an addin
-[assembly: Addin("Ornstein Uhlenbeck", "0.9.0", Category = "Calibration")]
+[assembly: Addin("Ornstein Uhlenbeck", "0.9.1", Category = "Calibration")]
 [assembly: AddinDependency("Fairmat", "1.0")]
 [assembly: AddinAuthor("Fairmat SRL")]
 [assembly: AddinDescription("Ornstein Uhlenbeck / Vasicek / One Factor Mean Reverting  and Log-Mean Reverting models and historical calibration")]

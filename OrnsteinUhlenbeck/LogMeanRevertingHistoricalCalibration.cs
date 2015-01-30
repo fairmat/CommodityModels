@@ -67,4 +67,31 @@ namespace OrnsteinUhlenbeck
         }
 
     }
+
+    /// <summary>
+    /// This calibration procedure calibrates volatility and mean reversion to historical values
+    /// but set long-term value and initial value to a fraction of the current dividend yield.
+    /// </summary>
+    [Extension("/Fairmat/Estimator")]
+    public class LongTermLogMeanRevertingHistoricalCalibration : LogMeanRevertingHistoricalCalibration
+    {
+        static double longTermDeprecation = 0.8;
+
+        public override EstimationResult Estimate(List<object> data, IEstimationSettings settings = null, IController controller = null, Dictionary<string, object> properties = null)
+        {
+            // Use historical calibration
+            var calibrationResult = base.Estimate(data, settings, controller, properties);
+            
+            // Set long-term and initial value to the same value
+            calibrationResult.Values[0]=  longTermDeprecation * calibrationResult.Values[0];
+            calibrationResult.Values[2] = calibrationResult.Values[0];
+
+            return calibrationResult;
+        }
+
+        public override string Description
+        {
+            get { return "Long-Term Ornstein-Uhlenbeck Historical Calibration"; }
+        }
+    }
 }
