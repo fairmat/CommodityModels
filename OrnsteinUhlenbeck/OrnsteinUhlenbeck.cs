@@ -30,7 +30,7 @@ namespace OrnsteinUhlenbeck
     /// Provides simulation for an Ornstein-Uhlenbeck process
     /// </summary>
     [Serializable]
-    public class OrnsteinUhlenbeck : IExtensibleProcess, IFullSimulator, IParsable,IPopulable
+    public class OrnsteinUhlenbeck : IExtensibleProcess, IFullSimulator, IParsable,IPopulable, IExportableContainer
     {
         static internal string processType = "Ornstein-Uhlenbeck";
         
