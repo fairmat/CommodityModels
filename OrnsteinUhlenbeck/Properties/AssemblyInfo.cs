@@ -27,7 +27,7 @@ using Mono.Addins;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Fairmat SRL")]
 [assembly: AssemblyProduct("OrnsteinUhlenbeck")]
-[assembly: AssemblyCopyright("Copyright ©  Fairmat SRL 2013")]
+[assembly: AssemblyCopyright("Copyright ©  Fairmat SRL 2013-2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -49,12 +49,12 @@ using Mono.Addins;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.9.2.0")]
+[assembly: AssemblyFileVersion("0.9.2.0")]
 
 
 // The following lines tell that the assembly is an addin
-[assembly: Addin("Ornstein Uhlenbeck", "0.9.1", Category = "Calibration")]
+[assembly: Addin("Ornstein Uhlenbeck", "0.9.2", Category = "Calibration")]
 [assembly: AddinDependency("Fairmat", "1.0")]
 [assembly: AddinAuthor("Fairmat SRL")]
 [assembly: AddinDescription("Ornstein Uhlenbeck / Vasicek / One Factor Mean Reverting  and Log-Mean Reverting models and historical calibration")]
