@@ -30,7 +30,7 @@ namespace OrnsteinUhlenbeck
 
 
     /// <summary>
-    /// Calibration Wrapper for the new plug-in model.
+    /// Calibration Wrapper for the new plug-in model for the underlying
     /// </summary>
     [Extension("/Fairmat/Estimator")]
     public class OrnsteinUhlenbeckHistoricalCalibrationPlugin : OrnsteinUhlenbeckHistoricalCalibration
@@ -40,6 +40,37 @@ namespace OrnsteinUhlenbeck
             get { return typeof(OrnsteinUhlenbeck); }
         }
     }
+
+    /// <summary>
+    /// Specializes the calibration process by forcing a market data request using the DividendYield field.
+    /// </summary>
+    [Extension("/Fairmat/Estimator")]
+    public class MeanRevertingHistoricalCalibrationForDividendYields : OrnsteinUhlenbeckHistoricalCalibration
+    {
+        public override string Description
+        {
+            get { return "Dividend Yield - Ornstein-Uhlenbeck Historical Calibration"; }
+        }
+
+        public override EstimateRequirement[] GetRequirements(IEstimationSettings settings, EstimateQuery query)
+        {
+            return new EstimateRequirement[] { new EstimateRequirement(typeof(DVPLI.MarketDataTypes.Scalar[])) { Field = "DividendYield" } };
+        }
+    }
+
+    /// <summary>
+    /// Specializes the calibration process by forcing a market data request using the DividendYield field.
+    /// </summary>
+    [Extension("/Fairmat/Estimator")]
+    public class MeanRevertingHistoricalCalibrationForDividendYieldsPlugIn: MeanRevertingHistoricalCalibrationForDividendYields
+    {
+        public override Type ProvidesTo
+        {
+            get { return typeof(OrnsteinUhlenbeck); }
+        }
+    }
+
+
 
     /// <summary>
     /// Calibrates the Ornstein Uhlenbeck from an historical price series
@@ -61,7 +92,7 @@ namespace OrnsteinUhlenbeck
 
         public virtual string ToolTipText
         {
-            get { return "Calibrate an Ornstein-Uhlenbeck from the stock/commodiy time series."; }
+            get { return "Calibrate an Ornstein-Uhlenbeck from the stock/commodiy/dividend yields time series."; }
         }
 
         public virtual string Description
@@ -145,7 +176,7 @@ namespace OrnsteinUhlenbeck
             return new EstimationResult(new string[] { "spot", "lambda", "mu", "sigma" }, new double[] { spot, lambda, mu, sigma });
         }
 
-        public EstimateRequirement[] GetRequirements(IEstimationSettings settings, EstimateQuery query)
+        public virtual EstimateRequirement[] GetRequirements(IEstimationSettings settings, EstimateQuery query)
         {
             return new EstimateRequirement[]{new EstimateRequirement(typeof(DVPLI.MarketDataTypes.Scalar[]))};
         }

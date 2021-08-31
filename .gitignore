@@ -128,3 +128,7 @@ UpgradeLog*.XML
 *.mtc
 *.mtc0
 
+*.ide-wal
+*.ide-shm
+*.ide
+*.lock

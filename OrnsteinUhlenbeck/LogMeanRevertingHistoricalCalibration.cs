@@ -41,23 +41,23 @@ namespace OrnsteinUhlenbeck
                 //check for positiveness
                 if (entry.Value < 0)
                 {
-                    string errMsg="Log-Mean Reverting calibration: input series cannot contain negative entries";
-                   
+                    string errMsg = "Log-Mean Reverting calibration: input series cannot contain negative entries";
+
                     return new EstimationResult(errMsg);
                 }
             }
 
             //convert to Vector and transform to log-series
-            Vector s = (Vector)Array.ConvertAll<IMarketData, double>(tmp, x => Math.Log( ((Scalar)x).Value));
+            Vector s = (Vector)Array.ConvertAll<IMarketData, double>(tmp, x => Math.Log(((Scalar)x).Value));
 
 
             //Assumes elements are  order for decreasing date
             double dt = (tmp[0].TimeStamp - tmp[1].TimeStamp).TotalDays / 252.0;
 
 
-            var calibrationResult=CalibrateOU(s, dt);
+            var calibrationResult = CalibrateOU(s, dt);
 
-            
+
             // initial value and long term are expressed original value
             calibrationResult.Values[0] = Math.Exp(calibrationResult.Values[0]);
             calibrationResult.Values[2] = Math.Exp(calibrationResult.Values[2]);
@@ -70,8 +70,9 @@ namespace OrnsteinUhlenbeck
 
     /// <summary>
     /// This calibration procedure calibrates volatility and mean reversion to historical values
-    /// but set long-term value and initial value to a fraction of the current dividend yield.
+    /// but set long-term value and initial value to a fraction (longTermDeprecation) of the current value.
     /// </summary>
+    [Obsolete]
     [Extension("/Fairmat/Estimator")]
     public class LongTermLogMeanRevertingHistoricalCalibration : LogMeanRevertingHistoricalCalibration
     {
@@ -81,9 +82,9 @@ namespace OrnsteinUhlenbeck
         {
             // Use historical calibration
             var calibrationResult = base.Estimate(data, settings, controller, properties);
-            
+
             // Set long-term and initial value to the same value
-            calibrationResult.Values[0]=  longTermDeprecation * calibrationResult.Values[0];
+            calibrationResult.Values[0] = longTermDeprecation * calibrationResult.Values[0];
             calibrationResult.Values[2] = calibrationResult.Values[0];
 
             return calibrationResult;
@@ -94,4 +95,26 @@ namespace OrnsteinUhlenbeck
             get { return "Long-Term Ornstein-Uhlenbeck Historical Calibration"; }
         }
     }
+
+    /// <summary>
+    /// Specializes the calibration process by forcing a market data request using the DividendYield field.
+    /// </summary>
+    [Extension("/Fairmat/Estimator")]
+    public class LogMeanRevertingHistoricalCalibrationForDividendYields : LogMeanRevertingHistoricalCalibration
+    {
+        public override string Description
+        {
+            get { return "Dividend Yield - Ornstein-Uhlenbeck Historical Calibration"; }
+        }
+
+        public override EstimateRequirement[] GetRequirements(IEstimationSettings settings, EstimateQuery query)
+        {
+            return new EstimateRequirement[] { new EstimateRequirement(typeof(DVPLI.MarketDataTypes.Scalar[])) { Field="DividendYield"} };
+        }
+
+
+    }
 }
+
+
+
