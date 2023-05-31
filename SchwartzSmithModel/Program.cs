@@ -244,7 +244,7 @@ namespace SchwartzSmithModel
             Matrix P_cond = matOutput[5];
             Matrix F = matOutput[6];
             Matrix logl = matOutput[7];
-            double l = logl.ColumnSum()[0];
+            double l = logl[Range.All,0].Sum();
 
             // TODO: This seems lost?
             Matrix est1 = Matrix.Exp(a[Range.All, 0] + a[Range.All, 1]);
@@ -815,9 +815,8 @@ namespace SchwartzSmithModel
 
                 iter = iter + 1;
                 // TODO is this the first element in practice?
-                Console.WriteLine(iter);
-                Console.WriteLine(logl.ColumnSum());
-                ll[0, iter + 1] = logl.ColumnSum()[0];
+               
+                ll[0, iter + 1] = logl[Range.All, 0].Sum();
             }
 
 
@@ -1127,6 +1126,24 @@ namespace SchwartzSmithModel
             Matrix fe = FutureErrors(maturities, y, dhat1, Hhat1, a1);
             Console.WriteLine(thetahat);
             //thetahat
+        }
+    }
+
+    internal static class MatrixExtensions
+    {
+        internal static Matrix ColumnSum(this Matrix t)
+        {
+            Matrix output = new Matrix(1, t.C, false);
+            for (int c = 0; c < t.C; c++)
+            {
+                double sum = 0;
+                for (int r = 0; r < t.R; r++)
+                    sum += t[r, c];
+
+                output[0, c] = sum;
+            }
+
+            return output;
         }
     }
 }
