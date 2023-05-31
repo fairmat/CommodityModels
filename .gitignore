@@ -132,3 +132,5 @@ UpgradeLog*.XML
 *.ide-shm
 *.ide
 *.lock
+/.vs/CommodityModels/FileContentIndex/479974dd-8815-4f59-a6fd-3714735c06c5.vsidx
+*.vsidx
