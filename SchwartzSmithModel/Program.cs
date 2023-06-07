@@ -42,6 +42,8 @@
 
 using System;
 using DVPLI;
+using Fairmat.Math.Algebra;
+
 namespace SchwartzSmithModel
 {
     class MainClass
