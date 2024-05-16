@@ -43,6 +43,7 @@
 using System;
 using DVPLI;
 using Fairmat.Math.Algebra;
+using Range = DVPLI.Range;
 
 namespace SchwartzSmithModel
 {

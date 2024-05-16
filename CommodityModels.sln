@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrnsteinUhlenbeck", "OrnsteinUhlenbeck\OrnsteinUhlenbeck.csproj", "{B8AB52A3-95EE-4CC4-AC56-300E8FF6FD53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrnsteinUhlenbeck", "OrnsteinUhlenbeck\OrnsteinUhlenbeck.csproj", "{B8AB52A3-95EE-4CC4-AC56-300E8FF6FD53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchwartzSmithModel", "SchwartzSmithModel\SchwartzSmithModel.csproj", "{0DAB4D81-2AE4-436F-8C9C-024822104FA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchwartzSmithModel", "SchwartzSmithModel\SchwartzSmithModel.csproj", "{0DAB4D81-2AE4-436F-8C9C-024822104FA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
