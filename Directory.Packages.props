@@ -1,0 +1,25 @@
+<Project>
+
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <IncludeLatestPreRelease>true</IncludeLatestPreRelease>
+        <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>
+        <FairmatDepsVersion>*-build*</FairmatDepsVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <FairmatDepsVersion>*</FairmatDepsVersion>
+    </PropertyGroup>
+
+    <ItemGroup Label="FairmatDeps">
+        <!-- Inser here the Fairmat dependencies -->
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageVersion Include="System.Memory" Version="4.5.5" />
+        <PackageVersion Include="System.Reflection.Emit" Version="4.7.0" />
+        <PackageVersion Include="System.Collections.Immutable" Version="8.0.0" />
+        <PackageVersion Include="System.Numerics.Vectors" Version="4.5.0" />
+        <PackageVersion Include="Mono.Addins" Version="1.4.1" />
+    </ItemGroup>
+    
+</Project>

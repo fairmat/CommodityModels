@@ -3,31 +3,49 @@
     <TargetFrameworks>net8.0;net48</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Title>SchwartzSmithModel</Title>
+    <PackageId>$(BasePackageId).$(Title)</PackageId>
+    <AssemblyName>$(Title)</AssemblyName>
     <AssemblyTitle>Schwartz &amp; Smith Model</AssemblyTitle>
     <Product>Schwartz &amp; Smith Model</Product>
-    <Copyright>Copyright ©  2013</Copyright>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
   <ItemGroup>
+    <!-- TODO: This reference will be a nuget package soon, these lines below are temporary -->
+    <None Include="..\..\DVPLReferences\CoreExtensions.dll" Pack="true" PackagePath="lib" />
     <Reference Include="CoreExtensions">
       <HintPath>..\..\DVPLReferences\CoreExtensions.dll</HintPath>
     </Reference>
+    <!-- TODO: This reference will be a nuget package soon, these lines below are temporary -->
+    <None Include="..\..\DVPLReferences\DVPLDOM.dll" Pack="true" PackagePath="lib" />
     <Reference Include="DVPLDOM">
       <HintPath>..\..\DVPLReferences\DVPLDOM.dll</HintPath>
     </Reference>
+    <!-- TODO: This reference will be a nuget package soon, these lines below are temporary -->
+    <None Include="..\..\DVPLReferences\DVPLDOME.dll" Pack="true" PackagePath="lib" />
     <Reference Include="DVPLDOME">
       <HintPath>..\..\DVPLReferences\DVPLDOME.dll</HintPath>
     </Reference>
+    <!-- TODO: This reference will be a nuget package soon, these lines below are temporary -->
+    <None Include="..\..\DVPLReferences\DVPLI.dll" Pack="true" PackagePath="lib" />
     <Reference Include="DVPLI">
       <HintPath>..\..\DVPLReferences\DVPLI.dll</HintPath>
     </Reference>
+    <!-- TODO: This reference will be a nuget package soon, these lines below are temporary -->
+    <None Include="..\..\DVPLReferences\DVPLInterfaces.dll" Pack="true" PackagePath="lib" />
     <Reference Include="DVPLInterfaces">
       <HintPath>..\..\DVPLReferences\DVPLInterfaces.dll</HintPath>
     </Reference>
+    <!-- TODO: This reference will be a nuget package soon, these lines below are temporary -->
+    <None Include="..\..\DVPLReferences\DVPLUtils.dll" Pack="true" PackagePath="lib" />
     <Reference Include="DVPLUtils">
       <HintPath>..\..\DVPLReferences\DVPLUtils.dll</HintPath>
     </Reference>
@@ -41,6 +59,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Mono.Addins" Version="1.4.1" />
+    <PackageReference Include="Mono.Addins" />
   </ItemGroup>
 </Project>
