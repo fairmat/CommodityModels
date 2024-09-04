@@ -3,35 +3,21 @@
     <TargetFrameworks>net8.0;net48</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Title>SchwartzSmithModel</Title>
+    <PackageId>$(BasePackageId).$(Title)</PackageId>
+    <AssemblyName>$(Title)</AssemblyName>
     <AssemblyTitle>Schwartz &amp; Smith Model</AssemblyTitle>
     <Product>Schwartz &amp; Smith Model</Product>
-    <Copyright>Copyright ©  2013</Copyright>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="CoreExtensions">
-      <HintPath>..\..\DVPLReferences\CoreExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="DVPLDOM">
-      <HintPath>..\..\DVPLReferences\DVPLDOM.dll</HintPath>
-    </Reference>
-    <Reference Include="DVPLDOME">
-      <HintPath>..\..\DVPLReferences\DVPLDOME.dll</HintPath>
-    </Reference>
-    <Reference Include="DVPLI">
-      <HintPath>..\..\DVPLReferences\DVPLI.dll</HintPath>
-    </Reference>
-    <Reference Include="DVPLInterfaces">
-      <HintPath>..\..\DVPLReferences\DVPLInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="DVPLUtils">
-      <HintPath>..\..\DVPLReferences\DVPLUtils.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
   <ItemGroup>
     <Content Include="crudeoil.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -41,6 +27,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Mono.Addins" Version="1.4.1" />
+    <PackageReference Include="Mono.Addins" />
+    <PackageReference Include="Fairmat.Dvpl.CoreExtensions" />
+    <PackageReference Include="Fairmat.Dvpl.DVPLDOM" />
+    <PackageReference Include="Fairmat.Dvpl.DVPLDOME" />
+    <PackageReference Include="Fairmat.Dvpl.DVPLI" />
+    <PackageReference Include="Fairmat.Dvpl.DVPLInterfaces" />
+    <PackageReference Include="Fairmat.Dvpl.DVPLUtils" />
   </ItemGroup>
 </Project>
